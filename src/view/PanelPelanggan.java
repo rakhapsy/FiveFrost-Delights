@@ -28,6 +28,7 @@ public class PanelPelanggan extends javax.swing.JPanel {
     public PanelPelanggan() {
         initComponents();
         loadPelanggan("");
+        kondisiAwal();
     }
 
     /**
@@ -50,6 +51,7 @@ public class PanelPelanggan extends javax.swing.JPanel {
         btnSimpanPelanggan = new javax.swing.JButton();
         btnUbahPelanggan = new javax.swing.JButton();
         btnHapusPelanggan = new javax.swing.JButton();
+        btnBatal = new javax.swing.JButton();
         tabelPelangganPanel = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tabelPelanggan = new javax.swing.JTable();
@@ -85,6 +87,7 @@ public class PanelPelanggan extends javax.swing.JPanel {
         btnSimpanPelanggan.setBackground(new java.awt.Color(0, 153, 204));
         btnSimpanPelanggan.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnSimpanPelanggan.setForeground(new java.awt.Color(255, 255, 255));
+        btnSimpanPelanggan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons/icon-simpan.png"))); // NOI18N
         btnSimpanPelanggan.setText("Simpan");
         btnSimpanPelanggan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -95,6 +98,7 @@ public class PanelPelanggan extends javax.swing.JPanel {
         btnUbahPelanggan.setBackground(new java.awt.Color(153, 153, 0));
         btnUbahPelanggan.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnUbahPelanggan.setForeground(new java.awt.Color(255, 255, 255));
+        btnUbahPelanggan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons/icon-edit.png"))); // NOI18N
         btnUbahPelanggan.setText("Ubah");
         btnUbahPelanggan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -105,10 +109,22 @@ public class PanelPelanggan extends javax.swing.JPanel {
         btnHapusPelanggan.setBackground(new java.awt.Color(204, 0, 0));
         btnHapusPelanggan.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnHapusPelanggan.setForeground(new java.awt.Color(255, 255, 255));
+        btnHapusPelanggan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons/icon-hapus.png"))); // NOI18N
         btnHapusPelanggan.setText("Hapus");
         btnHapusPelanggan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnHapusPelangganActionPerformed(evt);
+            }
+        });
+
+        btnBatal.setBackground(new java.awt.Color(102, 102, 102));
+        btnBatal.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnBatal.setForeground(new java.awt.Color(255, 255, 255));
+        btnBatal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons/icon-batal.png"))); // NOI18N
+        btnBatal.setText("Batal");
+        btnBatal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBatalActionPerformed(evt);
             }
         });
 
@@ -128,17 +144,19 @@ public class PanelPelanggan extends javax.swing.JPanel {
                             .addComponent(jLabel7)
                             .addComponent(jLabel8))
                         .addGap(18, 18, 18)))
-                .addGroup(formPelangganPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(inputTelpPelanggan, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, formPelangganPanelLayout.createSequentialGroup()
-                        .addComponent(btnSimpanPelanggan, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnUbahPelanggan, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnHapusPelanggan, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(inputNamaPelanggan, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(inputAlamatPelanggan, javax.swing.GroupLayout.PREFERRED_SIZE, 425, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addGroup(formPelangganPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(inputTelpPelanggan)
+                    .addComponent(inputNamaPelanggan)
+                    .addComponent(inputAlamatPelanggan, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(formPelangganPanelLayout.createSequentialGroup()
+                        .addComponent(btnSimpanPelanggan)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnUbahPelanggan)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnHapusPelanggan)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnBatal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
         formPelangganPanelLayout.setVerticalGroup(
             formPelangganPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -159,8 +177,9 @@ public class PanelPelanggan extends javax.swing.JPanel {
                 .addGroup(formPelangganPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSimpanPelanggan, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnUbahPelanggan, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnHapusPelanggan, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(21, Short.MAX_VALUE))
+                    .addComponent(btnHapusPelanggan, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBatal, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
 
         tabelPelangganPanel.setBackground(new java.awt.Color(255, 255, 255));
@@ -187,15 +206,20 @@ public class PanelPelanggan extends javax.swing.JPanel {
         tabelPelangganPanel.setLayout(tabelPelangganPanelLayout);
         tabelPelangganPanelLayout.setHorizontalGroup(
             tabelPelangganPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 612, Short.MAX_VALUE)
+            .addGroup(tabelPelangganPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 584, Short.MAX_VALUE))
         );
         tabelPelangganPanelLayout.setVerticalGroup(
             tabelPelangganPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(tabelPelangganPanelLayout.createSequentialGroup()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 26, Short.MAX_VALUE))
         );
 
         btnSearch.setBackground(new java.awt.Color(255, 255, 255));
         btnSearch.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons/icon-cari.png"))); // NOI18N
         btnSearch.setText("Cari");
         btnSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -211,31 +235,30 @@ public class PanelPelanggan extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(formPelangganPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(tabelPelangganPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
                         .addComponent(textPelanggan)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(inputSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnSearch))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(formPelangganPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(tabelPelangganPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(btnSearch)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(14, 14, 14)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(textPelanggan)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(inputSearch, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)))
-                .addGap(18, 18, 18)
+                    .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(inputSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(formPelangganPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tabelPelangganPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(91, Short.MAX_VALUE))
+                    .addComponent(tabelPelangganPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(formPelangganPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(412, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -262,9 +285,7 @@ public class PanelPelanggan extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Data Berhasil Disimpan!");
             loadPelanggan("");
 
-            inputNamaPelanggan.setText("");
-            inputTelpPelanggan.setText("");
-            inputAlamatPelanggan.setText("");
+            kondisiAwal();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Data Gagal Disimpan: " + e.getMessage());
         }
@@ -305,9 +326,7 @@ public class PanelPelanggan extends javax.swing.JPanel {
 
             loadPelanggan("");
 
-            inputNamaPelanggan.setText("");
-            inputTelpPelanggan.setText("");
-            inputAlamatPelanggan.setText("");
+            kondisiAwal();
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Data Gagal Diubah: " + e.getMessage());
@@ -335,9 +354,7 @@ public class PanelPelanggan extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(this, "Data Berhasil Dihapus!");
                 loadPelanggan("");
 
-                inputNamaPelanggan.setText("");
-                inputTelpPelanggan.setText("");
-                inputAlamatPelanggan.setText("");
+                kondisiAwal();
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(this, "Data Gagal Dihapus: " + e.getMessage());
             }
@@ -357,6 +374,10 @@ public class PanelPelanggan extends javax.swing.JPanel {
             inputNamaPelanggan.setText(nama);
             inputTelpPelanggan.setText(telp);
             inputAlamatPelanggan.setText(alamat);
+            
+            btnSimpanPelanggan.setEnabled(false);
+            btnUbahPelanggan.setEnabled(true);
+            btnHapusPelanggan.setEnabled(true);
         }
     }//GEN-LAST:event_tabelPelangganMouseClicked
 
@@ -375,8 +396,14 @@ public class PanelPelanggan extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_inputTelpPelangganKeyTyped
 
+    private void btnBatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBatalActionPerformed
+        // TODO add your handling code here:
+        kondisiAwal();
+    }//GEN-LAST:event_btnBatalActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBatal;
     private javax.swing.JButton btnHapusPelanggan;
     private javax.swing.JButton btnSearch;
     private javax.swing.JButton btnSimpanPelanggan;
@@ -451,5 +478,17 @@ public class PanelPelanggan extends javax.swing.JPanel {
             e.printStackTrace();
         }
         return idBaru;
+    }
+    
+    private void kondisiAwal() {
+        inputNamaPelanggan.setText("");
+        inputTelpPelanggan.setText("");
+        inputAlamatPelanggan.setText("");
+
+        btnSimpanPelanggan.setEnabled(true);
+        btnUbahPelanggan.setEnabled(false);
+        btnHapusPelanggan.setEnabled(false);
+
+        inputNamaPelanggan.requestFocus();
     }
 }

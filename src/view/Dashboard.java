@@ -69,6 +69,7 @@ public class Dashboard extends javax.swing.JFrame {
     // Sidebar buttons — Main Menu
     private JButton btnPengguna;
     
+    private JLabel lblIconUser;
     private JLabel lblUserName;
     private JLabel lblSubtitle;
     
@@ -204,7 +205,7 @@ public class Dashboard extends javax.swing.JFrame {
         btnDataMaster.addActionListener(e -> {
             boolean visible = subDataMaster.isVisible();
             subDataMaster.setVisible(!visible);
-            btnDataMaster.setText(!visible ? "▼ Data Master" : "Data Master");
+            btnDataMaster.setText(!visible ? "Data Master ▼" : "Data Master");
             sidebarPanel.revalidate();
             sidebarPanel.repaint();
         });
@@ -242,7 +243,7 @@ public class Dashboard extends javax.swing.JFrame {
         btnTransaksi.addActionListener(e -> {
             boolean visible = subTransaksi.isVisible();
             subTransaksi.setVisible(!visible);
-            btnTransaksi.setText(!visible ? "▼ Transaksi" : "Transaksi");
+            btnTransaksi.setText(!visible ? "Transaksi ▼" : "Transaksi");
             sidebarPanel.revalidate();
             sidebarPanel.repaint();
         });
@@ -281,7 +282,7 @@ public class Dashboard extends javax.swing.JFrame {
         btnLaporan.addActionListener(e -> {
             boolean visible = subLaporan.isVisible();
             subLaporan.setVisible(!visible);
-            btnLaporan.setText(!visible ? "▼ Laporan" : "Laporan");
+            btnLaporan.setText(!visible ? "Laporan ▼" : "Laporan");
             sidebarPanel.revalidate();
             sidebarPanel.repaint();
         });
@@ -308,6 +309,40 @@ public class Dashboard extends javax.swing.JFrame {
         sidebarPanel.add(btnPengguna);
 
         sidebarPanel.add(Box.createRigidArea(new Dimension(0, 4)));
+        
+        try {
+            ImageIcon iconDashboard = new ImageIcon(getClass().getResource("/img/icons/icon-dashboard.png"));
+            ImageIcon iconDataMaster = new ImageIcon(getClass().getResource("/img/icons/icon-data-master.png"));
+            ImageIcon iconProduk = new ImageIcon(getClass().getResource("/img/icons/icon-produk.png"));
+            ImageIcon iconPelanggan = new ImageIcon(getClass().getResource("/img/icons/icon-pelanggan.png"));
+            ImageIcon iconSupplier = new ImageIcon(getClass().getResource("/img/icons/icon-supplier.png"));
+            ImageIcon iconTransaksi = new ImageIcon(getClass().getResource("/img/icons/icon-transaksi.png"));
+            ImageIcon iconTrxMasuk = new ImageIcon(getClass().getResource("/img/icons/icon-transaksi-masuk.png"));
+            ImageIcon iconTrxKeluar = new ImageIcon(getClass().getResource("/img/icons/icon-transaksi-keluar.png"));
+            ImageIcon iconTrxRetur = new ImageIcon(getClass().getResource("/img/icons/icon-transaksi-retur.png"));
+            ImageIcon iconLaporan = new ImageIcon(getClass().getResource("/img/icons/icon-laporan.png"));
+            ImageIcon iconLaporanStok = new ImageIcon(getClass().getResource("/img/icons/icon-laporan-stok.png"));
+            ImageIcon iconLaporanMasukKeluar = new ImageIcon(getClass().getResource("/img/icons/icon-laporan-masuk-keluar.png"));
+            ImageIcon iconLaporanRetur = new ImageIcon(getClass().getResource("/img/icons/icon-laporan-retur.png"));
+            ImageIcon iconPengguna = new ImageIcon(getClass().getResource("/img/icons/icon-pengguna.png"));
+            btnDashboard.setIcon(iconDashboard);
+            btnDataMaster.setIcon(iconDataMaster);
+            btnProduk.setIcon(iconProduk);
+            btnPelanggan.setIcon(iconPelanggan);
+            btnSupplier.setIcon(iconSupplier);
+            btnTransaksi.setIcon(iconTransaksi);
+            btnMasuk.setIcon(iconTrxMasuk);
+            btnKeluar.setIcon(iconTrxKeluar);
+            btnRetur.setIcon(iconTrxRetur);
+            btnLaporan.setIcon(iconLaporan);
+            btnLapStok.setIcon(iconLaporanStok);
+            btnLapMasuk.setIcon(iconLaporanMasukKeluar);
+            btnLapKeluar.setIcon(iconLaporanMasukKeluar);
+            btnLapRetur.setIcon(iconLaporanRetur);
+            btnPengguna.setIcon(iconPengguna);
+        } catch (Exception e) {
+            System.out.println("Ikon sidebar tidak ditemukan!");
+        }
 
         sidebarPanel.add(Box.createVerticalGlue());
     }
@@ -315,6 +350,7 @@ public class Dashboard extends javax.swing.JFrame {
     public void aturHakAkses(String role) {
         lblSubtitle.setText(role);
 
+        btnDataMaster.setVisible(true);
         btnPengguna.setVisible(true);
         btnLaporan.setVisible(true);
 
@@ -322,6 +358,8 @@ public class Dashboard extends javax.swing.JFrame {
             btnPengguna.setVisible(false);
 
         } else if (role.equalsIgnoreCase("Gudang")) {
+            btnDataMaster.setVisible(false);
+            subDataMaster.setVisible(false);
             btnPengguna.setVisible(false);
             btnLaporan.setVisible(false);
             subLaporan.setVisible(false);
@@ -401,6 +439,7 @@ public class Dashboard extends javax.swing.JFrame {
         btnLogout.setBackground(new java.awt.Color(255, 255, 255));
         btnLogout.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btnLogout.setForeground(new java.awt.Color(0, 102, 102));
+        btnLogout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons/icon-logout.png"))); // NOI18N
         btnLogout.setText("Logout");
         btnLogout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -414,8 +453,8 @@ public class Dashboard extends javax.swing.JFrame {
             headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(headerPanelLayout.createSequentialGroup()
                 .addComponent(headerTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 1528, Short.MAX_VALUE)
-                .addComponent(btnLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 1505, Short.MAX_VALUE)
+                .addComponent(btnLogout))
         );
         headerPanelLayout.setVerticalGroup(
             headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -445,6 +484,7 @@ public class Dashboard extends javax.swing.JFrame {
 
         stokLabel.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         stokLabel.setForeground(new java.awt.Color(255, 255, 255));
+        stokLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons/icon-produk.png"))); // NOI18N
         stokLabel.setText("Produk Aktif");
 
         jmlStokLabel.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
@@ -486,6 +526,7 @@ public class Dashboard extends javax.swing.JFrame {
 
         trxKeluarLabel.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         trxKeluarLabel.setForeground(new java.awt.Color(255, 255, 255));
+        trxKeluarLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons/icon-transaksi-keluar.png"))); // NOI18N
         trxKeluarLabel.setText("Transaksi Keluar");
 
         jmlTrxKeluarLabel.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
@@ -513,7 +554,7 @@ public class Dashboard extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel3))
                     .addComponent(trxKeluarBlnThnLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(104, Short.MAX_VALUE))
+                .addContainerGap(76, Short.MAX_VALUE))
         );
         trxKeluarPanelLayout.setVerticalGroup(
             trxKeluarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -534,6 +575,7 @@ public class Dashboard extends javax.swing.JFrame {
 
         trxMasukLabel.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         trxMasukLabel.setForeground(new java.awt.Color(255, 255, 255));
+        trxMasukLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons/icon-transaksi-masuk.png"))); // NOI18N
         trxMasukLabel.setText("Transaksi Masuk");
 
         jmlTrxMasukLabel.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
@@ -561,7 +603,7 @@ public class Dashboard extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel2))
                     .addComponent(trxMasukBlnThnLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(105, Short.MAX_VALUE))
+                .addContainerGap(77, Short.MAX_VALUE))
         );
         trxMasukPanelLayout.setVerticalGroup(
             trxMasukPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -581,6 +623,7 @@ public class Dashboard extends javax.swing.JFrame {
 
         trxKeluarLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         trxKeluarLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        trxKeluarLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons/icon-transaksi-retur.png"))); // NOI18N
         trxKeluarLabel1.setText("Transaksi Retur");
 
         jmlTrxReturLabel.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
@@ -608,7 +651,7 @@ public class Dashboard extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel4))
                     .addComponent(trxReturBlnThnLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(115, Short.MAX_VALUE))
+                .addContainerGap(158, Short.MAX_VALUE))
         );
         trxKeluarPanel1Layout.setVerticalGroup(
             trxKeluarPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -654,6 +697,7 @@ public class Dashboard extends javax.swing.JFrame {
 
         stokLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         stokLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        stokLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons/icon-pengguna.png"))); // NOI18N
         stokLabel1.setText("Pelanggan Aktif");
 
         jmlPelangganLabel.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
@@ -682,7 +726,7 @@ public class Dashboard extends javax.swing.JFrame {
                                 .addComponent(jmlPelangganLabel)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jLabel5)))
-                        .addGap(0, 101, Short.MAX_VALUE))
+                        .addGap(0, 73, Short.MAX_VALUE))
                     .addComponent(trxMasukBlnThnLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -709,7 +753,6 @@ public class Dashboard extends javax.swing.JFrame {
             .addGroup(menuUtamaPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(menuUtamaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jumboMenuUtama)
                     .addGroup(menuUtamaPanelLayout.createSequentialGroup()
                         .addComponent(stokPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(32, 32, 32)
@@ -718,14 +761,18 @@ public class Dashboard extends javax.swing.JFrame {
                         .addComponent(trxMasukPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(30, 30, 30)
                         .addComponent(trxKeluarPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(32, 32, 32)
-                        .addComponent(trxKeluarPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(stokAlertPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(26, 26, 26)
+                        .addComponent(trxKeluarPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(menuUtamaPanelLayout.createSequentialGroup()
-                        .addComponent(panelGrafikTerlaris, javax.swing.GroupLayout.PREFERRED_SIZE, 700, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(panelGrafikBatang, javax.swing.GroupLayout.PREFERRED_SIZE, 660, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(105, Short.MAX_VALUE))
+                        .addGroup(menuUtamaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jumboMenuUtama)
+                            .addComponent(stokAlertPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(menuUtamaPanelLayout.createSequentialGroup()
+                                .addComponent(panelGrafikTerlaris, javax.swing.GroupLayout.PREFERRED_SIZE, 700, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(panelGrafikBatang, javax.swing.GroupLayout.PREFERRED_SIZE, 660, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         menuUtamaPanelLayout.setVerticalGroup(
             menuUtamaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

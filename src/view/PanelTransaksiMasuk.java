@@ -29,7 +29,7 @@ public class PanelTransaksiMasuk extends javax.swing.JPanel implements DataListe
     
     public PanelTransaksiMasuk() {
         initComponents();
-        loadTransaksiMasuk();
+        loadTransaksiMasuk("");
 //        loadComboBox();
     }
 
@@ -59,6 +59,8 @@ public class PanelTransaksiMasuk extends javax.swing.JPanel implements DataListe
         tabelSupplierPanel = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         tabelTransaksiMasuk = new javax.swing.JTable();
+        inputSearch = new javax.swing.JTextField();
+        btnSearch = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -84,6 +86,7 @@ public class PanelTransaksiMasuk extends javax.swing.JPanel implements DataListe
         btnSimpan.setBackground(new java.awt.Color(0, 153, 204));
         btnSimpan.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnSimpan.setForeground(new java.awt.Color(255, 255, 255));
+        btnSimpan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons/icon-simpan.png"))); // NOI18N
         btnSimpan.setText("Simpan");
         btnSimpan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -94,6 +97,7 @@ public class PanelTransaksiMasuk extends javax.swing.JPanel implements DataListe
         btnHapus.setBackground(new java.awt.Color(204, 0, 0));
         btnHapus.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnHapus.setForeground(new java.awt.Color(255, 255, 255));
+        btnHapus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons/icon-hapus.png"))); // NOI18N
         btnHapus.setText("Hapus");
         btnHapus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -147,9 +151,9 @@ public class PanelTransaksiMasuk extends javax.swing.JPanel implements DataListe
                 .addGap(28, 28, 28)
                 .addGroup(formSupplierPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(formSupplierPanelLayout.createSequentialGroup()
-                        .addComponent(btnSimpan, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnHapus, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnSimpan)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnHapus))
                     .addComponent(inputQty, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(inputTanggal, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(formSupplierPanelLayout.createSequentialGroup()
@@ -227,6 +231,16 @@ public class PanelTransaksiMasuk extends javax.swing.JPanel implements DataListe
                 .addGap(0, 13, Short.MAX_VALUE))
         );
 
+        btnSearch.setBackground(new java.awt.Color(255, 255, 255));
+        btnSearch.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons/icon-cari.png"))); // NOI18N
+        btnSearch.setText("Cari");
+        btnSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSearchActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -235,19 +249,26 @@ public class PanelTransaksiMasuk extends javax.swing.JPanel implements DataListe
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(textSupplier)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
                         .addComponent(formSupplierPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(tabelSupplierPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(tabelSupplierPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(textSupplier)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(inputSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnSearch)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(textSupplier)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(textSupplier)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnSearch)
+                        .addComponent(inputSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(tabelSupplierPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -285,7 +306,7 @@ public class PanelTransaksiMasuk extends javax.swing.JPanel implements DataListe
             stat.executeUpdate(sql);
 
             JOptionPane.showMessageDialog(this, "Transaksi Berhasil! Stok barang otomatis bertambah.");
-            loadTransaksiMasuk();
+            loadTransaksiMasuk("");
 
             inputTanggal.setDate(null);
             inputProduk.setText("");
@@ -323,7 +344,7 @@ public class PanelTransaksiMasuk extends javax.swing.JPanel implements DataListe
 
                 JOptionPane.showMessageDialog(this, "Transaksi Berhasil Dibatalkan!");
 
-                loadTransaksiMasuk(); 
+                loadTransaksiMasuk(""); 
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(this, "Gagal menghapus transaksi: " + e.getMessage());
             }
@@ -362,15 +383,23 @@ public class PanelTransaksiMasuk extends javax.swing.JPanel implements DataListe
         }
     }//GEN-LAST:event_inputQtyKeyTyped
 
+    private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
+        // TODO add your handling code here:
+        String keyword  = inputSearch.getText().trim();
+        loadTransaksiMasuk(keyword);
+    }//GEN-LAST:event_btnSearchActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnHapus;
     private javax.swing.JButton btnPilihProduk;
     private javax.swing.JButton btnPilihSupplier;
+    private javax.swing.JButton btnSearch;
     private javax.swing.JButton btnSimpan;
     private javax.swing.JPanel formSupplierPanel;
     private javax.swing.JTextField inputProduk;
     private javax.swing.JTextField inputQty;
+    private javax.swing.JTextField inputSearch;
     private javax.swing.JTextField inputSupplier;
     private com.toedter.calendar.JDateChooser inputTanggal;
     private javax.swing.JLabel jLabel10;
@@ -383,7 +412,7 @@ public class PanelTransaksiMasuk extends javax.swing.JPanel implements DataListe
     private javax.swing.JLabel textSupplier;
     // End of variables declaration//GEN-END:variables
 
-    private void loadTransaksiMasuk() {
+    private void loadTransaksiMasuk(String keyword) {
         model = new DefaultTableModel();
         model.addColumn("ID Transaksi");
         model.addColumn("Tanggal");
@@ -391,18 +420,28 @@ public class PanelTransaksiMasuk extends javax.swing.JPanel implements DataListe
         model.addColumn("Supplier");
         model.addColumn("Qty Masuk");
         tabelTransaksiMasuk.setModel(model);
+        StringBuilder sql =  new StringBuilder(
+                "SELECT t.id_masuk, t.tanggal, b.nama_produk, s.nama_supplier, t.qty_masuk " +
+                "FROM transaksi_masuk t JOIN master_produk b ON t.id_produk = b.id_produk JOIN master_supplier s ON t.id_supplier = s.id_supplier WHERE 1=1 "
+        );
+
+        if (!keyword.isEmpty()) {
+            sql.append("AND (t.tanggal LIKE '%" + keyword + "%' OR b.nama_produk LIKE '%" + keyword + "%' OR s.nama_supplier LIKE '%" + keyword + "%') ");
+        }
+
+        sql.append("ORDER BY t.tanggal DESC");
 
         try {
             Connection conn = KoneksiDB.getKoneksi();
             Statement stat = conn.createStatement();
 
-            String sql = "SELECT t.id_masuk, t.tanggal, b.nama_produk, s.nama_supplier, t.qty_masuk " +
-                         "FROM transaksi_masuk t " +
-                         "JOIN master_produk b ON t.id_produk = b.id_produk " +
-                         "JOIN master_supplier s ON t.id_supplier = s.id_supplier " +
-                         "ORDER BY t.tanggal DESC";
+//            String sql = "SELECT t.id_masuk, t.tanggal, b.nama_produk, s.nama_supplier, t.qty_masuk " +
+//                         "FROM transaksi_masuk t " +
+//                         "JOIN master_produk b ON t.id_produk = b.id_produk " +
+//                         "JOIN master_supplier s ON t.id_supplier = s.id_supplier " +
+//                         "ORDER BY t.tanggal DESC";
 
-            ResultSet rs = stat.executeQuery(sql);
+            ResultSet rs = stat.executeQuery(sql.toString());
 
             while (rs.next()) {
                 model.addRow(new Object[]{

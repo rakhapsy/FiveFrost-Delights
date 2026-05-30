@@ -28,6 +28,7 @@ public class PanelSupplier extends javax.swing.JPanel {
     public PanelSupplier() {
         initComponents();
         loadSupplier("");
+        kondisiAwal();
     }
 
     /**
@@ -50,6 +51,7 @@ public class PanelSupplier extends javax.swing.JPanel {
         btnSimpanSupplier = new javax.swing.JButton();
         btnUbahSupplier = new javax.swing.JButton();
         btnHapusSupplier = new javax.swing.JButton();
+        btnBatal = new javax.swing.JButton();
         tabelSupplierPanel = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         tabelSupplier = new javax.swing.JTable();
@@ -86,6 +88,7 @@ public class PanelSupplier extends javax.swing.JPanel {
         btnSimpanSupplier.setBackground(new java.awt.Color(0, 153, 204));
         btnSimpanSupplier.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnSimpanSupplier.setForeground(new java.awt.Color(255, 255, 255));
+        btnSimpanSupplier.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons/icon-simpan.png"))); // NOI18N
         btnSimpanSupplier.setText("Simpan");
         btnSimpanSupplier.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -96,6 +99,7 @@ public class PanelSupplier extends javax.swing.JPanel {
         btnUbahSupplier.setBackground(new java.awt.Color(153, 153, 0));
         btnUbahSupplier.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnUbahSupplier.setForeground(new java.awt.Color(255, 255, 255));
+        btnUbahSupplier.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons/icon-edit.png"))); // NOI18N
         btnUbahSupplier.setText("Ubah");
         btnUbahSupplier.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -106,10 +110,22 @@ public class PanelSupplier extends javax.swing.JPanel {
         btnHapusSupplier.setBackground(new java.awt.Color(204, 0, 0));
         btnHapusSupplier.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnHapusSupplier.setForeground(new java.awt.Color(255, 255, 255));
+        btnHapusSupplier.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons/icon-hapus.png"))); // NOI18N
         btnHapusSupplier.setText("Hapus");
         btnHapusSupplier.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnHapusSupplierActionPerformed(evt);
+            }
+        });
+
+        btnBatal.setBackground(new java.awt.Color(102, 102, 102));
+        btnBatal.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnBatal.setForeground(new java.awt.Color(255, 255, 255));
+        btnBatal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons/icon-batal.png"))); // NOI18N
+        btnBatal.setText("Batal");
+        btnBatal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBatalActionPerformed(evt);
             }
         });
 
@@ -129,17 +145,20 @@ public class PanelSupplier extends javax.swing.JPanel {
                             .addComponent(jLabel10)
                             .addComponent(jLabel11))
                         .addGap(18, 18, 18)))
-                .addGroup(formSupplierPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(inputTelpSupplier, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, formSupplierPanelLayout.createSequentialGroup()
-                        .addComponent(btnSimpanSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnUbahSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnHapusSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(inputNamaSupplier, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(inputAlamatSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 425, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addGroup(formSupplierPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(formSupplierPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(inputTelpSupplier, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(inputNamaSupplier, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(inputAlamatSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 425, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(formSupplierPanelLayout.createSequentialGroup()
+                        .addComponent(btnSimpanSupplier)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnUbahSupplier)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnHapusSupplier)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnBatal)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         formSupplierPanelLayout.setVerticalGroup(
             formSupplierPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -160,7 +179,8 @@ public class PanelSupplier extends javax.swing.JPanel {
                 .addGroup(formSupplierPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSimpanSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnUbahSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnHapusSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnHapusSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBatal, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(21, Short.MAX_VALUE))
         );
 
@@ -199,6 +219,7 @@ public class PanelSupplier extends javax.swing.JPanel {
 
         btnSearch.setBackground(new java.awt.Color(255, 255, 255));
         btnSearch.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons/icon-cari.png"))); // NOI18N
         btnSearch.setText("Cari");
         btnSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -233,8 +254,8 @@ public class PanelSupplier extends javax.swing.JPanel {
                     .addComponent(textSupplier)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(inputSearch, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)))
-                .addGap(18, 18, 18)
+                        .addComponent(inputSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(15, 15, 15)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(formSupplierPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tabelSupplierPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -265,9 +286,7 @@ public class PanelSupplier extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Data Berhasil Disimpan!");
             loadSupplier("");
 
-            inputNamaSupplier.setText("");
-            inputTelpSupplier.setText("");
-            inputAlamatSupplier.setText("");
+            kondisiAwal();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Data Gagal Disimpan: " + e.getMessage());
         }
@@ -308,9 +327,7 @@ public class PanelSupplier extends javax.swing.JPanel {
 
             loadSupplier("");
 
-            inputNamaSupplier.setText("");
-            inputTelpSupplier.setText("");
-            inputAlamatSupplier.setText("");
+            kondisiAwal();
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Data Gagal Diubah: " + e.getMessage());
@@ -338,9 +355,7 @@ public class PanelSupplier extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(this, "Data Berhasil Dihapus!");
                 loadSupplier("");
 
-                inputNamaSupplier.setText("");
-                inputTelpSupplier.setText("");
-                inputAlamatSupplier.setText("");
+                kondisiAwal();
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(this, "Data Gagal Dihapus: " + e.getMessage());
             }
@@ -360,6 +375,10 @@ public class PanelSupplier extends javax.swing.JPanel {
             inputNamaSupplier.setText(nama);
             inputTelpSupplier.setText(telp);
             inputAlamatSupplier.setText(alamat);
+
+            btnSimpanSupplier.setEnabled(false);
+            btnUbahSupplier.setEnabled(true);
+            btnHapusSupplier.setEnabled(true);
         }
     }//GEN-LAST:event_tabelSupplierMouseClicked
 
@@ -378,8 +397,14 @@ public class PanelSupplier extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_inputTelpSupplierKeyTyped
 
+    private void btnBatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBatalActionPerformed
+        // TODO add your handling code here:
+        kondisiAwal();
+    }//GEN-LAST:event_btnBatalActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBatal;
     private javax.swing.JButton btnHapusSupplier;
     private javax.swing.JButton btnSearch;
     private javax.swing.JButton btnSimpanSupplier;
@@ -454,5 +479,17 @@ public class PanelSupplier extends javax.swing.JPanel {
             e.printStackTrace();
         }
         return idBaru;
+    }
+    
+    private void kondisiAwal() {
+        inputNamaSupplier.setText("");
+        inputTelpSupplier.setText("");
+        inputAlamatSupplier.setText("");
+
+        btnSimpanSupplier.setEnabled(true);
+        btnUbahSupplier.setEnabled(false);
+        btnHapusSupplier.setEnabled(false);
+
+        inputNamaSupplier.requestFocus();
     }
 }

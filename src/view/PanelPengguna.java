@@ -48,6 +48,7 @@ public class PanelPengguna extends javax.swing.JPanel {
     public PanelPengguna() {
         initComponents();
         loadPengguna();
+        kondisiAwal();
     }
 
     /**
@@ -69,6 +70,7 @@ public class PanelPengguna extends javax.swing.JPanel {
         btnHapusPengguna = new javax.swing.JButton();
         inputPassword = new javax.swing.JPasswordField();
         inputRole = new javax.swing.JComboBox();
+        btnBatal = new javax.swing.JButton();
         tabelPenggunaPanel = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabelUser = new javax.swing.JTable();
@@ -93,6 +95,7 @@ public class PanelPengguna extends javax.swing.JPanel {
         btnSimpanPengguna.setBackground(new java.awt.Color(0, 153, 204));
         btnSimpanPengguna.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnSimpanPengguna.setForeground(new java.awt.Color(255, 255, 255));
+        btnSimpanPengguna.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons/icon-simpan.png"))); // NOI18N
         btnSimpanPengguna.setText("Simpan");
         btnSimpanPengguna.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -103,6 +106,7 @@ public class PanelPengguna extends javax.swing.JPanel {
         btnUbahPengguna.setBackground(new java.awt.Color(153, 153, 0));
         btnUbahPengguna.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnUbahPengguna.setForeground(new java.awt.Color(255, 255, 255));
+        btnUbahPengguna.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons/icon-edit.png"))); // NOI18N
         btnUbahPengguna.setText("Ubah");
         btnUbahPengguna.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -113,6 +117,7 @@ public class PanelPengguna extends javax.swing.JPanel {
         btnHapusPengguna.setBackground(new java.awt.Color(204, 0, 0));
         btnHapusPengguna.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnHapusPengguna.setForeground(new java.awt.Color(255, 255, 255));
+        btnHapusPengguna.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons/icon-hapus.png"))); // NOI18N
         btnHapusPengguna.setText("Hapus");
         btnHapusPengguna.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -126,6 +131,17 @@ public class PanelPengguna extends javax.swing.JPanel {
         inputRole.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Admin", "Gudang" }));
         inputRole.setPreferredSize(new java.awt.Dimension(425, 40));
 
+        btnBatal.setBackground(new java.awt.Color(102, 102, 102));
+        btnBatal.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnBatal.setForeground(new java.awt.Color(255, 255, 255));
+        btnBatal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons/icon-batal.png"))); // NOI18N
+        btnBatal.setText("Batal");
+        btnBatal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBatalActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout formPenggunaPanelLayout = new javax.swing.GroupLayout(formPenggunaPanel);
         formPenggunaPanel.setLayout(formPenggunaPanelLayout);
         formPenggunaPanelLayout.setHorizontalGroup(
@@ -137,18 +153,19 @@ public class PanelPengguna extends javax.swing.JPanel {
                     .addComponent(jLabel5)
                     .addComponent(jLabel6))
                 .addGap(18, 18, 18)
-                .addGroup(formPenggunaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(formPenggunaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, formPenggunaPanelLayout.createSequentialGroup()
-                            .addComponent(btnSimpanPengguna, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(btnUbahPengguna, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(btnHapusPengguna, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(inputUsername, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(inputPassword, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(inputRole, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addGroup(formPenggunaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, formPenggunaPanelLayout.createSequentialGroup()
+                        .addComponent(btnSimpanPengguna)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnUbahPengguna)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnHapusPengguna)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnBatal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(inputUsername, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(inputPassword, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(inputRole, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
         formPenggunaPanelLayout.setVerticalGroup(
             formPenggunaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -169,7 +186,8 @@ public class PanelPengguna extends javax.swing.JPanel {
                 .addGroup(formPenggunaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSimpanPengguna, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnUbahPengguna, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnHapusPengguna, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnHapusPengguna, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBatal, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(30, Short.MAX_VALUE))
         );
 
@@ -264,9 +282,7 @@ public class PanelPengguna extends javax.swing.JPanel {
             javax.swing.JOptionPane.showMessageDialog(this, "Data Pengguna berhasil ditambahkan!");
 
             loadPengguna();
-            inputUsername.setText("");
-            inputPassword.setText("");
-            inputRole.setSelectedIndex(0);
+            kondisiAwal();
 
         } catch (Exception e) {
             javax.swing.JOptionPane.showMessageDialog(this, "Gagal menambah data: " + e.getMessage());
@@ -310,9 +326,7 @@ public class PanelPengguna extends javax.swing.JPanel {
             javax.swing.JOptionPane.showMessageDialog(this, "Data Pengguna berhasil diubah!");
 
             loadPengguna();
-            inputUsername.setText("");
-            inputPassword.setText("");
-            inputRole.setSelectedIndex(0);
+            kondisiAwal();
 
         } catch (Exception e) {
             javax.swing.JOptionPane.showMessageDialog(this, "Gagal mengubah data: " + e.getMessage());
@@ -346,9 +360,7 @@ public class PanelPengguna extends javax.swing.JPanel {
                 javax.swing.JOptionPane.showMessageDialog(this, "Data Pengguna berhasil dihapus!");
 
                 loadPengguna();
-                inputUsername.setText("");
-                inputPassword.setText("");
-                inputRole.setSelectedIndex(0);
+                kondisiAwal();
             }
         } catch (Exception e) {
             javax.swing.JOptionPane.showMessageDialog(this, "Gagal menghapus data: " + e.getMessage());
@@ -373,10 +385,20 @@ public class PanelPengguna extends javax.swing.JPanel {
                     break;
             }
         }
+        
+        btnSimpanPengguna.setEnabled(false);
+        btnUbahPengguna.setEnabled(true);
+        btnHapusPengguna.setEnabled(true);
     }//GEN-LAST:event_tabelUserMouseClicked
+
+    private void btnBatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBatalActionPerformed
+        // TODO add your handling code here:
+        kondisiAwal();
+    }//GEN-LAST:event_btnBatalActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBatal;
     private javax.swing.JButton btnHapusPengguna;
     private javax.swing.JButton btnSimpanPengguna;
     private javax.swing.JButton btnUbahPengguna;
@@ -415,5 +437,17 @@ public class PanelPengguna extends javax.swing.JPanel {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Gagal Menampilkan Data: " + e.getMessage());
         }
+    }
+    
+    private void kondisiAwal() {
+        inputUsername.setText("");
+        inputPassword.setText("");
+        inputRole.setSelectedIndex(0);
+
+        btnSimpanPengguna.setEnabled(true);
+        btnUbahPengguna.setEnabled(false);
+        btnHapusPengguna.setEnabled(false);
+
+        inputUsername.requestFocus();
     }
 }

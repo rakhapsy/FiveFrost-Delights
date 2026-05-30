@@ -69,8 +69,8 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <Component id="headerTitle" min="-2" pref="400" max="-2" attributes="0"/>
-                  <EmptySpace pref="1528" max="32767" attributes="0"/>
-                  <Component id="btnLogout" min="-2" pref="100" max="-2" attributes="0"/>
+                  <EmptySpace pref="1505" max="32767" attributes="0"/>
+                  <Component id="btnLogout" min="-2" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -110,6 +110,9 @@
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="66" green="66" red="0" type="rgb"/>
+            </Property>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/img/icons/icon-logout.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Logout"/>
           </Properties>
@@ -168,7 +171,6 @@
                   <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jumboMenuUtama" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="stokPanel" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
@@ -177,17 +179,23 @@
                               <Component id="trxMasukPanel" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                               <Component id="trxKeluarPanel" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
-                              <Component id="trxKeluarPanel1" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                              <Component id="trxKeluarPanel1" max="32767" attributes="0"/>
                           </Group>
-                          <Component id="stokAlertPanel" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="panelGrafikTerlaris" min="-2" pref="700" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="panelGrafikBatang" min="-2" pref="660" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jumboMenuUtama" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="stokAlertPanel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="panelGrafikTerlaris" min="-2" pref="700" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="panelGrafikBatang" min="-2" pref="660" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace pref="105" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -276,6 +284,9 @@
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
                     </Property>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/img/icons/icon-produk.png"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="Produk Aktif"/>
                   </Properties>
                 </Component>
@@ -327,7 +338,7 @@
                               </Group>
                               <Component id="trxKeluarBlnThnLabel" alignment="0" max="32767" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="104" max="32767" attributes="0"/>
+                          <EmptySpace pref="76" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -356,6 +367,9 @@
                     </Property>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                    </Property>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/img/icons/icon-transaksi-keluar.png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Transaksi Keluar"/>
                   </Properties>
@@ -419,7 +433,7 @@
                               </Group>
                               <Component id="trxMasukBlnThnLabel" alignment="0" max="32767" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="105" max="32767" attributes="0"/>
+                          <EmptySpace pref="77" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -448,6 +462,9 @@
                     </Property>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                    </Property>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/img/icons/icon-transaksi-masuk.png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Transaksi Masuk"/>
                   </Properties>
@@ -508,7 +525,7 @@
                               </Group>
                               <Component id="trxReturBlnThnLabel" alignment="0" max="32767" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="115" max="32767" attributes="0"/>
+                          <EmptySpace pref="158" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -537,6 +554,9 @@
                     </Property>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                    </Property>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/img/icons/icon-transaksi-retur.png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Transaksi Retur"/>
                   </Properties>
@@ -646,7 +666,7 @@
                                           <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
-                                  <EmptySpace min="0" pref="101" max="32767" attributes="0"/>
+                                  <EmptySpace min="0" pref="73" max="32767" attributes="0"/>
                               </Group>
                               <Component id="trxMasukBlnThnLabel1" alignment="0" max="32767" attributes="0"/>
                           </Group>
@@ -679,6 +699,9 @@
                     </Property>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                    </Property>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/img/icons/icon-pengguna.png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Pelanggan Aktif"/>
                   </Properties>

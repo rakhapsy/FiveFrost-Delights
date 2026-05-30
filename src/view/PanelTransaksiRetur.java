@@ -29,7 +29,7 @@ public class PanelTransaksiRetur extends javax.swing.JPanel implements DataListe
     
     public PanelTransaksiRetur() {
         initComponents();
-        loadTransaksiRetur();
+        loadTransaksiRetur("");
     }
 
     /**
@@ -60,6 +60,8 @@ public class PanelTransaksiRetur extends javax.swing.JPanel implements DataListe
         tabelSupplierPanel = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         tabelRetur = new javax.swing.JTable();
+        inputSearch = new javax.swing.JTextField();
+        btnSearch = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -85,6 +87,7 @@ public class PanelTransaksiRetur extends javax.swing.JPanel implements DataListe
         btnSimpan.setBackground(new java.awt.Color(0, 153, 204));
         btnSimpan.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnSimpan.setForeground(new java.awt.Color(255, 255, 255));
+        btnSimpan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons/icon-simpan.png"))); // NOI18N
         btnSimpan.setText("Simpan");
         btnSimpan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -95,6 +98,7 @@ public class PanelTransaksiRetur extends javax.swing.JPanel implements DataListe
         btnHapus.setBackground(new java.awt.Color(204, 0, 0));
         btnHapus.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnHapus.setForeground(new java.awt.Color(255, 255, 255));
+        btnHapus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons/icon-hapus.png"))); // NOI18N
         btnHapus.setText("Hapus");
         btnHapus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -149,9 +153,9 @@ public class PanelTransaksiRetur extends javax.swing.JPanel implements DataListe
                 .addGap(28, 28, 28)
                 .addGroup(formSupplierPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, formSupplierPanelLayout.createSequentialGroup()
-                        .addComponent(btnSimpan, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnHapus, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnSimpan)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnHapus))
                     .addComponent(cmbRetur, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(inputQty)
                     .addComponent(inputTanggal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -228,6 +232,16 @@ public class PanelTransaksiRetur extends javax.swing.JPanel implements DataListe
             .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
+        btnSearch.setBackground(new java.awt.Color(255, 255, 255));
+        btnSearch.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons/icon-cari.png"))); // NOI18N
+        btnSearch.setText("Cari");
+        btnSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSearchActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -236,24 +250,31 @@ public class PanelTransaksiRetur extends javax.swing.JPanel implements DataListe
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(textSupplier)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
                         .addComponent(formSupplierPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(31, 31, 31)
-                        .addComponent(tabelSupplierPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(tabelSupplierPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(textSupplier)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(inputSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnSearch)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(textSupplier)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(textSupplier)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnSearch)
+                        .addComponent(inputSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(tabelSupplierPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(formSupplierPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -284,7 +305,7 @@ public class PanelTransaksiRetur extends javax.swing.JPanel implements DataListe
             stat.executeUpdate(sql);
 
             JOptionPane.showMessageDialog(this, "Transaksi Berhasil!");
-            loadTransaksiRetur();
+            loadTransaksiRetur("");
 
             inputTanggal.setDate(null);
             inputProduk.setText("");
@@ -321,7 +342,7 @@ public class PanelTransaksiRetur extends javax.swing.JPanel implements DataListe
 
                 JOptionPane.showMessageDialog(this, "Transaksi Berhasil Dibatalkan!");
 
-                loadTransaksiRetur();
+                loadTransaksiRetur("");
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(this, "Gagal menghapus transaksi: " + e.getMessage());
             }
@@ -350,16 +371,24 @@ public class PanelTransaksiRetur extends javax.swing.JPanel implements DataListe
         }
     }//GEN-LAST:event_inputQtyKeyTyped
 
+    private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
+        // TODO add your handling code here:
+        String keyword  = inputSearch.getText().trim();
+        loadTransaksiRetur(keyword);
+    }//GEN-LAST:event_btnSearchActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnHapus;
     private javax.swing.JButton btnPilihProduk;
+    private javax.swing.JButton btnSearch;
     private javax.swing.JButton btnSimpan;
     private javax.swing.JComboBox cmbRetur;
     private javax.swing.JPanel formSupplierPanel;
     private javax.swing.JTextArea inputKeterangan;
     private javax.swing.JTextField inputProduk;
     private javax.swing.JTextField inputQty;
+    private javax.swing.JTextField inputSearch;
     private com.toedter.calendar.JDateChooser inputTanggal;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -373,7 +402,7 @@ public class PanelTransaksiRetur extends javax.swing.JPanel implements DataListe
     private javax.swing.JLabel textSupplier;
     // End of variables declaration//GEN-END:variables
 
-    private void loadTransaksiRetur() {
+    private void loadTransaksiRetur(String keyword) {
         model = new DefaultTableModel();
         model.addColumn("ID Retur");
         model.addColumn("Tanggal");
@@ -382,17 +411,27 @@ public class PanelTransaksiRetur extends javax.swing.JPanel implements DataListe
         model.addColumn("Qty Retur");
         model.addColumn("Keterangan");
         tabelRetur.setModel(model);
+        StringBuilder sql =  new StringBuilder(
+                "SELECT t.id_retur, t.tanggal, b.nama_produk, t.jenis_retur, t.qty_retur, t.keterangan " +
+                "FROM transaksi_retur t JOIN master_produk b ON t.id_produk = b.id_produk WHERE 1=1 "
+        );
+
+        if (!keyword.isEmpty()) {
+            sql.append("AND (t.tanggal LIKE '%" + keyword + "%' OR b.nama_produk LIKE '%" + keyword + "%' OR t.jenis_retur LIKE '%" + keyword + "%') ");
+        }
+
+        sql.append("ORDER BY t.tanggal DESC");
 
         try {
             Connection conn = KoneksiDB.getKoneksi();
             Statement stat = conn.createStatement();
 
-            String sql = "SELECT t.id_retur, t.tanggal, b.nama_produk, t.jenis_retur, t.qty_retur, t.keterangan " +
-                         "FROM transaksi_retur t " +
-                         "JOIN master_produk b ON t.id_produk = b.id_produk " +
-                         "ORDER BY t.tanggal DESC";
+//            String sql = "SELECT t.id_retur, t.tanggal, b.nama_produk, t.jenis_retur, t.qty_retur, t.keterangan " +
+//                         "FROM transaksi_retur t " +
+//                         "JOIN master_produk b ON t.id_produk = b.id_produk " +
+//                         "ORDER BY t.tanggal DESC";
 
-            ResultSet rs = stat.executeQuery(sql);
+            ResultSet rs = stat.executeQuery(sql.toString());
 
             while (rs.next()) {
                 model.addRow(new Object[]{

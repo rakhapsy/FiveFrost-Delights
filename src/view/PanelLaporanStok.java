@@ -61,6 +61,7 @@ public class PanelLaporanStok extends javax.swing.JPanel {
         btnCetak.setBackground(new java.awt.Color(0, 102, 102));
         btnCetak.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnCetak.setForeground(new java.awt.Color(255, 255, 255));
+        btnCetak.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons/icon-cetak.png"))); // NOI18N
         btnCetak.setText("Cetak Laporan");
         btnCetak.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -103,12 +104,11 @@ public class PanelLaporanStok extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnCetak)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel2)))
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(btnCetak))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
